@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
 //        placeDBManager.insertPlace("FGHIJ");
 //        placeDBManager.insertFood("FGHIJ","ABC",852,4398);
 //        placeDBManager.insertFood("FGHIJ","LMN",401,23901);
-        Spinner placeSpinner = findViewById(R.id.radioGroupLocation);
 
         Cursor myCursor = placeDBManager.getAllPlaces();
         ArrayAdapter<String> newAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
@@ -82,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         newAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        placeSpinner.setAdapter(newAdapter);
+        radioGroupLocation.setAdapter(newAdapter);
 
-        placeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        radioGroupLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedPlace[0] = parent.getItemAtPosition(position).toString();
@@ -111,7 +110,13 @@ public class MainActivity extends AppCompatActivity {
                         foodCursor,
                         from,
                         to,
-                        0);
+                        0) {
+                    @Override
+                    public CharSequence convertToString(Cursor cursor) {
+                        int index = cursor.getColumnIndex(PlaceDBManager.COLUMN_FOOD_NAME);
+                        return cursor.getString(index);
+                    }
+                };
                 editTextFoodName.setAdapter(adapter);
             }
 
