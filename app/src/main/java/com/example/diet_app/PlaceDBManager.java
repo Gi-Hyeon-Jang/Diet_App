@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class PlaceDBManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Places.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_PLACE = "Place";
     private static final String TABLE_FOOD = "Food";
@@ -28,6 +28,7 @@ public class PlaceDBManager extends SQLiteOpenHelper {
                 + COLUMN_PLACE_NAME + " TEXT PRIMARY KEY)";
         db.execSQL(createPlaceTable);
         String createFoodTable = "CREATE TABLE " + TABLE_FOOD + "("
+                + "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_PLACE_NAME + " TEXT,"
                 + COLUMN_FOOD_NAME + " TEXT,"
                 + COLUMN_CALORIES + " INTEGER,"
@@ -62,7 +63,13 @@ public class PlaceDBManager extends SQLiteOpenHelper {
 
     public Cursor getAllFoodsForPlace(String placeName) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_FOOD, null, COLUMN_PLACE_NAME + "=?", new String[]{placeName}, null, null, null);
+        String[] columns = {"_id", COLUMN_PLACE_NAME, COLUMN_FOOD_NAME, COLUMN_CALORIES, COLUMN_COST};
+        return db.query(TABLE_FOOD, columns, COLUMN_PLACE_NAME + "=?", new String[]{placeName}, null, null, null);
+    }
+    public Cursor getMatchingFoodsForPlace(String place, String str) {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_FOOD + " WHERE " + COLUMN_PLACE_NAME + " = ? AND " + COLUMN_FOOD_NAME + " LIKE ?";
+        return db.rawQuery(query, new String[]{place, "%" + str + "%"});
     }
     public void deletePlace(String placeName) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -71,6 +78,10 @@ public class PlaceDBManager extends SQLiteOpenHelper {
 
     public void deleteFood(String placeName, String foodName) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_FOOD, COLUMN_PLACE_NAME + "=? AND " + COLUMN_FOOD_NAME + "=?", new String[]{placeName, foodName});
+        db.delete(TABLE_FOOD, DATABASE_NAME + "=? AND " + COLUMN_FOOD_NAME + "=?", new String[]{placeName, foodName});
+    }
+    public Cursor getAllPlaces() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.query(TABLE_PLACE, new String[]{COLUMN_PLACE_NAME}, null, null, null, null, null);
     }
 }
