@@ -5,4 +5,14 @@
     <string name="confirmButton">확인</string>
     <string name="viewTotalButton">오늘 먹은 칼로리 확인</string>
     <string name="costView">123</string>
+    <string name="locationEdit">학식 장소 선택</string>
+    <string name="location1">상록원 2층</string>
+    <string name="location2">상록원 3층</string>
+    <string name="location3">기숙사 식당</string>
+    <string name="imageEdit">이미지 선택</string>
+    <string name="foodNameEdit">음식 이름 입력</string>
+    <string name="sideDishEdit">반찬 이름 입력</string>
+    <string name="reviewEdit">음식 리뷰 입력</string>
+    <string name="timeEdit">식사 시간 입력</string>
+    <string name="costEdit">식사 비용 입력</string>
 </resources>

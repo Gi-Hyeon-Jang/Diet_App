@@ -35,10 +35,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS daily_diet");
         onCreate(db);
         if (oldVersion < 3) {
-            db.execSQL("ALTER TABLE food_reviews ADD COLUMN image_path TEXT");
+            db.execSQL("ALTER TABLE daily_diet ADD COLUMN image_path TEXT");
         }
         if (oldVersion < 3) {
-            db.execSQL("ALTER TABLE food_reviews ADD COLUMN meal_datetime DATETIME");
+            db.execSQL("ALTER TABLE daily_diet ADD COLUMN meal_datetime DATETIME");
         }
     }
 }
