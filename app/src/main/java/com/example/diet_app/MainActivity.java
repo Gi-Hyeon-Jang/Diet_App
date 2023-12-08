@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner radioGroupLocation;
     private EditText editTextSideDish, editTextReview, editTextDateTime, editTextCost;
     private int selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute;
-    private Button buttonSelectImage;
+    private Button buttonSelectImage,checkDiet;
     private String imagePath;
     private ActivityResultLauncher<String> imagePickerLauncher;
     private AutoCompleteTextView editTextFoodName;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         editTextDateTime = findViewById(R.id.editTextDateTime);
         editTextCost = findViewById(R.id.editTextCost);
         caloriesView= findViewById(R.id.caloriesView);
-
+        checkDiet = findViewById(R.id.checkDiet);
         final String[] selectedPlace = { "selectedPlace" };
 //        placeDBManager.insertPlace("ABCDE");
 //        placeDBManager.insertFood("ABCDE","DEF",369,1234);
@@ -237,7 +238,13 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(this, "Total calories: " + totalCalories + ", Total cost: " + totalCost, Toast.LENGTH_LONG).show();
 //            }
 //        });
-
+        checkDiet.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        }));
     }
     private void selectImage() {
         // 이미지 선택 Intent 호출

@@ -11,12 +11,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="37dp"
+        android:layout_marginTop="61dp"
         android:layout_marginEnd="37dp"
+        android:layout_marginBottom="628dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSelectImage"
+        app:layout_constraintBottom_toTopOf="@+id/checkDiet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -25,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="37dp"
-        android:layout_marginBottom="578dp"
+        android:layout_marginBottom="579dp"
         android:text="@string/locationEdit"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
@@ -122,24 +124,37 @@
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="129dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="141dp"
         android:layout_marginBottom="39dp"
         android:text="@string/confirmButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkDiet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/caloriesView"
-        android:layout_width="210dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="59dp"
         android:layout_marginBottom="5dp"
         android:text="@string/confirmButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkDiet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCost" />
+
+    <Button
+        android:id="@+id/checkDiet"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="식단 확인하기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSave"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupLocation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

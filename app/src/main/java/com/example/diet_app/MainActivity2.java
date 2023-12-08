@@ -31,8 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         dbHelper = new DBHelper(this);
         database = dbHelper.getReadableDatabase();
 
-        cursor = database.query("daily_diet",
-                new String[]{"id as _id", "food_name", "meal_datetime"}, null, null, null, null, null);
+        cursor = database.query("daily_diet", null, null, null, null, null, null);
 
         adapter = new DietAdapter(cursor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

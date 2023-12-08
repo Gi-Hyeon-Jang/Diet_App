@@ -1,5 +1,6 @@
 package com.example.diet_app;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +28,19 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.DietViewHolder
         if (cursor.moveToPosition(position)) {
             String foodName = cursor.getString(cursor.getColumnIndex("food_name"));
             String mealDatetime = cursor.getString(cursor.getColumnIndex("meal_datetime"));
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
 
             holder.foodNameTextView.setText(foodName);
             holder.mealDatetimeTextView.setText(mealDatetime);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), DisplayAll.class);
+                    intent.putExtra("id", id);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 
