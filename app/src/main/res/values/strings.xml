@@ -15,4 +15,5 @@
     <string name="timeEdit">식사 시간 입력</string>
     <string name="costEdit">식사 비용 입력</string>
     <string name="button_calendar">월간 식사 확인하기</string>
+    <string name="button_home">홈으로 돌아가기</string>
 </resources>

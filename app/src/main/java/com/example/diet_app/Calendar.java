@@ -3,10 +3,13 @@ package com.example.diet_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 
@@ -24,6 +27,18 @@ public class Calendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        Button buttonHome = findViewById(R.id.buttonHome);
+
+        buttonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //화면전환
+                Intent intent = new Intent(Calendar.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         calendarView = findViewById(R.id.calendarView);
 
