@@ -26,7 +26,7 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
         calendarView = findViewById(R.id.calendarView);
-        listViewDailyData = findViewById(R.id.listViewDailyData);
+
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -42,20 +42,22 @@ public class Calendar extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper(this);
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        String[] projection = {"location", "food_name", "meal_datetime"};
+        String[] projection = {"location", "food_name", "meal_datetime", "cost"};
         String selection = "meal_datetime LIKE ?";
         String[] selectionArgs = {selectedDate + "%"};
 
-        Cursor cursor = database.query("food_reviews", projection, selection, selectionArgs, null, null, null);
+        Cursor cursor = database.query("daily_diet", projection, selection, selectionArgs, null, null, null);
+
         List<String> dataForSelectedDate = new ArrayList<>();
 
         while (cursor.moveToNext()) {
             String location = cursor.getString(cursor.getColumnIndexOrThrow("location"));
             String foodName = cursor.getString(cursor.getColumnIndexOrThrow("food_name"));
             String mealDateTime = cursor.getString(cursor.getColumnIndexOrThrow("meal_datetime"));
+            String cost = cursor.getString(cursor.getColumnIndexOrThrow("cost"));
 
             // 데이터를 리스트에 추가
-            String data = mealDateTime + " - " + location + " - " + foodName;
+            String data = mealDateTime + " - " + location + " - " + foodName + " - " + cost;
             dataForSelectedDate.add(data);
         }
 
@@ -64,6 +66,7 @@ public class Calendar extends AppCompatActivity {
 
         // 리스트뷰에 데이터 표시
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataForSelectedDate);
+        ListView listViewDailyData=findViewById(R.id.listViewDailyData);
         listViewDailyData.setAdapter(adapter);
     }
 }
