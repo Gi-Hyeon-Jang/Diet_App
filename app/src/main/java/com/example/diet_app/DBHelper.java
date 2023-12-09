@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "daily_diet.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -16,9 +16,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE daily_diet (" +
                 "id INTEGER PRIMARY KEY," +
+                "type INTEGER,"+
                 "location TEXT," +
                 "food_name TEXT," +
-                "side_dish TEXT," +
+                "calorie TEXT," +
                 "review TEXT," +
                 "cost TEXT," +
                 "image_path TEXT," +
@@ -39,6 +40,10 @@ public class DBHelper extends SQLiteOpenHelper {
         if (oldVersion < 3) {
             db.execSQL("ALTER TABLE daily_diet ADD COLUMN meal_datetime DATETIME");
         }
+    }
+    public void deleteAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM daily_diet");
     }
 }
 

@@ -35,36 +35,52 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private PlaceDBManager placeDBManager;
-    private TextView caloriesView;
-    private Spinner radioGroupLocation;
-    private EditText editTextSideDish, editTextReview, editTextDateTime, editTextCost;
+    private Spinner spinnerLocation,selectMeal;
+    private EditText editTextCalorie, editTextReview, editTextDateTime, editTextCost;
     private int selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute;
     private Button buttonSelectImage,checkDiet;
     private String imagePath;
     private ActivityResultLauncher<String> imagePickerLauncher;
     private AutoCompleteTextView editTextFoodName;
-//    private Button confirmButton, viewTotalButton;
+    DBHelper dbHelper = new DBHelper(this);
+    //    private Button confirmButton, viewTotalButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         placeDBManager = new PlaceDBManager(this);
-        radioGroupLocation = findViewById(R.id.radioGroupLocation);
+        selectMeal =findViewById(R.id.selectMeal);
+        spinnerLocation = findViewById(R.id.spinnerLocation);
         editTextFoodName = findViewById(R.id.editTextFoodName);
-        editTextSideDish = findViewById(R.id.editTextSideDish);
+        editTextCalorie = findViewById(R.id.editTextCalorie);
         editTextReview = findViewById(R.id.editTextReview);
         editTextDateTime = findViewById(R.id.editTextDateTime);
         editTextCost = findViewById(R.id.editTextCost);
-        caloriesView= findViewById(R.id.caloriesView);
         checkDiet = findViewById(R.id.checkDiet);
         final String[] selectedPlace = { "selectedPlace" };
-//        placeDBManager.insertPlace("ABCDE");
-//        placeDBManager.insertFood("ABCDE","DEF",369,1234);
-//        placeDBManager.insertFood("ABCDE","JIK",147,5678);
-//        placeDBManager.insertPlace("FGHIJ");
-//        placeDBManager.insertFood("FGHIJ","ABC",852,4398);
-//        placeDBManager.insertFood("FGHIJ","LMN",401,23901);
+//        placeDBManager.insertPlace("상록원1층");
+//        placeDBManager.insertFood("상록원1층","라면",440,3800);
+//        placeDBManager.insertFood("상록원1층","라볶이",560,4500);
+//        placeDBManager.insertFood("상록원1층","짜계치버거",390,4900);
+//        placeDBManager.insertFood("상록원1층","감자튀김",210,1500);
+//        placeDBManager.insertFood("상록원1층","라볶이",560,4500);
+//        placeDBManager.insertFood("상록원1층","떡볶이",420,4900);
+//        placeDBManager.insertPlace("상록원2층");
+//        placeDBManager.insertFood("상록원2층","오늘의 덮밥",440,3800);
+//        placeDBManager.insertFood("상록원2층","국밥",490,4500);
+//        placeDBManager.insertFood("상록원2층","특 국밥",600,5500);
+//        placeDBManager.insertFood("상록원2층","우동",320,4800);
+//        placeDBManager.insertFood("상록원2층","돈가스",540,5500);
+//        placeDBManager.insertFood("상록원2층","돈가스 & 미니우동",680,6500);
+//        placeDBManager.insertPlace("상록원3층");
+//        placeDBManager.insertFood("상록원3층","오늘의 메뉴",440,6500);
+//        placeDBManager.insertPlace("기숙사 1층");
+//        placeDBManager.insertFood("기숙사 1층","카레",390,5500);
+//        placeDBManager.insertFood("기숙사 1층","돈가스",560,8500);
+//        placeDBManager.insertFood("기숙사 1층","우동",320,6000);
+//        placeDBManager.insertFood("기숙사 1층","대만식 덮밥",480,5500);
+//        placeDBManager.insertFood("기숙사 1층","마샬라커리&난",680,6500);
+//        placeDBManager.insertFood("기숙사 1층","아워홈",510,6500);
 
         Cursor myCursor = placeDBManager.getAllPlaces();
         ArrayAdapter<String> newAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
@@ -80,9 +96,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         newAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        radioGroupLocation.setAdapter(newAdapter);
-
-        radioGroupLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerLocation.setAdapter(newAdapter);
+        ArrayAdapter<CharSequence> adapter_2 = ArrayAdapter.createFromResource(this,
+                R.array.meal_options, android.R.layout.simple_spinner_item);
+        adapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectMeal.setAdapter(adapter_2);
+        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedPlace[0] = parent.getItemAtPosition(position).toString();
@@ -125,29 +144,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Cursor foodCursor = placeDBManager.getAllFoodsForPlace(selectedPlace[0]);
-        if (foodCursor != null && foodCursor.moveToFirst()) {
-            do {
-                // Get the data from the Cursor
-                String foodName = foodCursor.getString(foodCursor.getColumnIndex(PlaceDBManager.COLUMN_FOOD_NAME));
-                int calories = foodCursor.getInt(foodCursor.getColumnIndex(PlaceDBManager.COLUMN_CALORIES));
-                int cost = foodCursor.getInt(foodCursor.getColumnIndex(PlaceDBManager.COLUMN_COST));
-
-                // Log the data
-                Log.d("FoodData", "Food Name: " + foodName + ", Calories: " + calories + ", Cost: " + cost);
-            } while (foodCursor.moveToNext());
-        } else {
-            Log.d("FoodData", "No data found");
-        }
-        String[] from = new String[]{PlaceDBManager.COLUMN_FOOD_NAME};
-        int[] to = new int[]{android.R.id.text1};
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_dropdown_item_1line,
-                foodCursor,
-                from,
-                to,
-                0);
-        editTextFoodName.setAdapter(adapter);
+//        Cursor foodCursor = placeDBManager.getAllFoodsForPlace(selectedPlace[0]);
+//        if (foodCursor != null && foodCursor.moveToFirst()) {
+//            do {
+//                // Get the data from the Cursor
+//                String foodName = foodCursor.getString(foodCursor.getColumnIndex(PlaceDBManager.COLUMN_FOOD_NAME));
+//                int calories = foodCursor.getInt(foodCursor.getColumnIndex(PlaceDBManager.COLUMN_CALORIES));
+//                int cost = foodCursor.getInt(foodCursor.getColumnIndex(PlaceDBManager.COLUMN_COST));
+//
+//                // Log the data
+//                Log.d("FoodData", "Food Name: " + foodName + ", Calories: " + calories + ", Cost: " + cost);
+//            } while (foodCursor.moveToNext());
+//        } else {
+//            Log.d("FoodData", "No data found");
+//        }
+//        String[] from = new String[]{PlaceDBManager.COLUMN_FOOD_NAME};
+//        int[] to = new int[]{android.R.id.text1};
+//        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+//                android.R.layout.simple_dropdown_item_1line,
+//                foodCursor,
+//                from,
+//                to,
+//                0);
+//        editTextFoodName.setAdapter(adapter);
 
 
         // When a food is selected, get its calories and cost and fill them into the appropriate views
@@ -160,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 int calories = cursor.getInt(caloriesIndex);
                 int cost = cursor.getInt(costIndex);
-                caloriesView.setText(String.valueOf(calories));
+                editTextCalorie.setText(String.valueOf(calories));
                 editTextCost.setText(String.valueOf(cost));
             }
         });
@@ -285,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveDataToDatabase() {
-        Spinner spinnerLocation = findViewById(R.id.radioGroupLocation);
+        Spinner spinnerLocation = findViewById(R.id.spinnerLocation);
 
         if (spinnerLocation.getSelectedItem() == null) {
             // No item selected
@@ -295,18 +314,25 @@ public class MainActivity extends AppCompatActivity {
 
         String location = spinnerLocation.getSelectedItem().toString();
         String foodName = editTextFoodName.getText().toString();
-        String sideDish = editTextSideDish.getText().toString();
+        String calorie = editTextCalorie.getText().toString();
         String review = editTextReview.getText().toString();
         String cost = editTextCost.getText().toString();
-
+        Spinner selectMeal = findViewById(R.id.selectMeal);
+        if (selectMeal.getSelectedItem() == null) {
+            // No item selected
+            Toast.makeText(this, "식사 유형을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String typeString = selectMeal.getSelectedItem().toString();
+        int type = mapSpinnerItemToType(typeString);
         // SQLite 데이터베이스에 데이터 저장
-        DBHelper dbHelper = new DBHelper(this);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put("type",type);
         values.put("location", location);
         values.put("food_name", foodName);
-        values.put("side_dish", sideDish);
+        values.put("calorie", calorie);
         values.put("review", review);
         values.put("cost", cost);
         values.put("image_path", imagePath);
@@ -322,7 +348,20 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper.close();
     }
-
+    private int mapSpinnerItemToType(String selectedItem) {
+        switch (selectedItem) {
+            case "조식":
+                return 1;
+            case "중식":
+                return 2;
+            case "석식":
+                return 3;
+            case "음료":
+                return 4;
+            default:
+                return 0; // Default value if no match
+        }
+    }
     private String getFormattedDateTime() {
         return String.format(Locale.getDefault(), "%04d-%02d-%02d %02d:%02d", selectedYear, selectedMonth + 1, selectedDay, selectedHour, selectedMinute);
     }

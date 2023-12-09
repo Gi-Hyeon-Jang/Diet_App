@@ -10,10 +10,17 @@
     <string name="location3">기숙사 식당</string>
     <string name="imageEdit">이미지 선택</string>
     <string name="foodNameEdit">음식 이름 입력</string>
-    <string name="sideDishEdit">반찬 이름 입력</string>
+    <string name="calorieEdit">칼로리 입력</string>
     <string name="reviewEdit">음식 리뷰 입력</string>
     <string name="timeEdit">식사 시간 입력</string>
     <string name="costEdit">식사 비용 입력</string>
     <string name="button_calendar">월간 식사 확인하기</string>
     <string name="button_home">홈으로 돌아가기</string>
+    <string name="button_Analysis">월간 식사 분석</string>
+    <string-array name="meal_options">
+        <item>조식</item>
+        <item>중식</item>
+        <item>석식</item>
+        <item>음료</item>
+    </string-array>
 </resources>

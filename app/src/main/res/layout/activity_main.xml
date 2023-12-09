@@ -7,18 +7,29 @@
     tools:context=".InputActivity">
 
     <Spinner
-        android:id="@+id/radioGroupLocation"
+        android:id="@+id/spinnerLocation"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginBottom="628dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/checkDiet"
+        app:layout_constraintBottom_toTopOf="@+id/selectMeal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/selectMeal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextFoodName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLocation" />
 
 
     <TextView
@@ -27,25 +38,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="37dp"
-        android:layout_marginBottom="579dp"
+        android:layout_marginBottom="618dp"
         android:text="@string/locationEdit"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSave"
-        app:layout_constraintStart_toStartOf="@+id/radioGroupLocation"
+        app:layout_constraintStart_toStartOf="@+id/spinnerLocation"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSelectImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="2dp"
         android:text="@string/imageEdit"
-        app:layout_constraintBottom_toTopOf="@+id/editTextFoodName"
+        app:layout_constraintBottom_toTopOf="@+id/checkDiet"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupLocation" />
+        app:layout_constraintStart_toEndOf="@+id/buttonSave"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCost" />
 
     <AutoCompleteTextView
         android:id="@+id/editTextFoodName"
@@ -53,24 +63,22 @@
         android:layout_height="0dp"
         android:layout_marginStart="38dp"
         android:layout_marginEnd="38dp"
-        android:layout_marginBottom="25dp"
         android:ems="10"
         android:hint="@string/foodNameEdit"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextSideDish"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCalorie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSelectImage" />
+        app:layout_constraintTop_toBottomOf="@+id/selectMeal" />
 
     <EditText
-        android:id="@+id/editTextSideDish"
+        android:id="@+id/editTextCalorie"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
         android:ems="10"
-        android:hint="@string/sideDishEdit"
+        android:hint="@string/calorieEdit"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextReview"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,24 +89,23 @@
         android:id="@+id/editTextReview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
         android:ems="10"
         android:hint="@string/reviewEdit"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextDateTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSideDish" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCalorie" />
 
     <EditText
         android:id="@+id/editTextDateTime"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:hint="@string/timeEdit"
         android:inputType="text"
@@ -111,13 +118,13 @@
         android:id="@+id/editTextCost"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="62dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="19dp"
         android:ems="10"
         android:hint="@string/costEdit"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/caloriesView"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSelectImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDateTime" />
@@ -126,35 +133,26 @@
         android:id="@+id/buttonSave"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginBottom="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="27dp"
         android:text="@string/confirmButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkDiet"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSelectImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/caloriesView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/confirmButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkDiet"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCost" />
 
     <Button
         android:id="@+id/checkDiet"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
         android:text="식단 확인하기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonSave"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectImage" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

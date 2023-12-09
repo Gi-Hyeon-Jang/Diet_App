@@ -23,13 +23,14 @@ public class Calendar extends AppCompatActivity {
     private CalendarView calendarView;
     private ListView listViewDailyData;
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private Button buttonHome,buttonAnalysis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        Button buttonHome = findViewById(R.id.buttonHome);
-
+        buttonHome = findViewById(R.id.buttonHome);
+        buttonAnalysis = findViewById(R.id.buttonAnalysis);
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,7 +39,14 @@ public class Calendar extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        buttonAnalysis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //화면전환
+                Intent intent = new Intent(Calendar.this, MainActivity3.class);
+                startActivity(intent);
+            }
+        });
 
         calendarView = findViewById(R.id.calendarView);
 

@@ -14,7 +14,12 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop" />
-
+        <TextView
+            android:id="@+id/typeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:textSize="30sp" />
         <TextView
             android:id="@+id/food_name"
             android:layout_width="match_parent"
@@ -28,14 +33,6 @@
             android:layout_height="wrap_content"
             android:paddingTop="30dp"
             android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/review"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="30dp"
-            android:textSize="30sp" />
-
         <TextView
             android:id="@+id/cost"
             android:layout_width="match_parent"
@@ -49,7 +46,18 @@
             android:layout_height="wrap_content"
             android:paddingTop="30dp"
             android:textSize="30sp" />
-
+        <TextView
+            android:id="@+id/calorieView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/review"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:textSize="30sp" />
     </LinearLayout>
 
 </ScrollView>

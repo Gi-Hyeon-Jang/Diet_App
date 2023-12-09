@@ -84,4 +84,10 @@ public class PlaceDBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(TABLE_PLACE, new String[]{COLUMN_PLACE_NAME}, null, null, null, null, null);
     }
+
+    public void deleteAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_PLACE);
+        db.execSQL("DELETE FROM " + TABLE_FOOD);
+    }
 }
