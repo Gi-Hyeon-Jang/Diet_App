@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Cover"
-    android:orientation="vertical"
+    android:layout_centerHorizontal="false"
     android:background="@drawable/food"
-    >
+    android:orientation="vertical"
+    tools:context=".Cover">
+
+    <TextView
+        android:id="@+id/textView2"
+
+        android:layout_width="356dp"
+        android:layout_height="142dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="300dp"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:text="학생 식당\n개인 사용 관리"
+        android:textAlignment="center"
+
+
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="211dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#8BC34A"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:text="@string/button_start"
+
+        android:textSize="20dp" />
 
 </LinearLayout>

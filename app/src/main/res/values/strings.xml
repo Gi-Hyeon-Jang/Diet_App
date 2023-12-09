@@ -14,8 +14,8 @@
     <string name="reviewEdit">음식 리뷰 입력</string>
     <string name="timeEdit">식사 시간 입력</string>
     <string name="costEdit">식사 비용 입력</string>
-    <string name="button_calendar">월간 식사 확인하기</string>
-    <string name="button_home">홈으로 돌아가기</string>
+    <string name="button_calendar">월간 식사</string>
+    <string name="button_home">처음으로</string>
     <string name="button_Analysis">월간 식사 분석</string>
     <string-array name="meal_options">
         <item>조식</item>
@@ -23,4 +23,8 @@
         <item>석식</item>
         <item>음료</item>
     </string-array>
+    <string name="background">학생 식당 개인 사용 관리</string>
+    <string name="button_start">Start</string>
+    <string name="buttonSave">저장</string>
+    <string name="textFood">음식 분류 선택</string>
 </resources>

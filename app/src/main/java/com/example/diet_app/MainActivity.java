@@ -21,6 +21,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerLocation,selectMeal;
     private EditText editTextCalorie, editTextReview, editTextDateTime, editTextCost;
     private int selectedYear, selectedMonth, selectedDay, selectedHour, selectedMinute;
-    private Button buttonSelectImage,checkDiet;
+    private Button checkDiet;
+    private ImageButton buttonSelectImage;
     private String imagePath;
     private ActivityResultLauncher<String> imagePickerLauncher;
     private AutoCompleteTextView editTextFoodName;

@@ -3,11 +3,13 @@ package com.example.diet_app;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +41,7 @@ public class MainActivity2 extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        Button button_moveCalendar = findViewById(R.id.button_moveCalendar);
+        ImageButton button_moveCalendar = findViewById(R.id.button_moveCalendar);
         button_moveCalendar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

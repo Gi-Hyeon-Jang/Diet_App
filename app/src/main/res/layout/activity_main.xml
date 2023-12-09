@@ -6,107 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".InputActivity">
 
-    <Spinner
-        android:id="@+id/spinnerLocation"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="37dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/selectMeal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/selectMeal"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="11dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextFoodName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerLocation" />
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="618dp"
-        android:text="@string/locationEdit"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
-        app:layout_constraintStart_toStartOf="@+id/spinnerLocation"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSelectImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="2dp"
-        android:text="@string/imageEdit"
-        app:layout_constraintBottom_toTopOf="@+id/checkDiet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonSave"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCost" />
-
-    <AutoCompleteTextView
-        android:id="@+id/editTextFoodName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="38dp"
-        android:ems="10"
-        android:hint="@string/foodNameEdit"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextCalorie"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectMeal" />
 
     <EditText
-        android:id="@+id/editTextCalorie"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="37dp"
+        android:id="@+id/editTextCost"
+        android:layout_width="319dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
-        android:hint="@string/calorieEdit"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:hint="@string/costEdit"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextReview"
+        app:layout_constraintBottom_toTopOf="@+id/checkDiet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFoodName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateTime" />
+
+    <ImageButton
+        android:id="@+id/buttonSelectImage"
+        android:layout_width="117dp"
+        android:layout_height="152dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextReview"
+        app:layout_constraintEnd_toStartOf="@+id/editTextFoodName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectMeal"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <EditText
         android:id="@+id/editTextReview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="319dp"
+        android:layout_height="79dp"
         android:layout_marginStart="37dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="37dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
+        android:fontFamily="@font/gmarketsansmedium"
         android:hint="@string/reviewEdit"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextDateTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCalorie" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectImage" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editTextFoodName"
+        android:layout_width="188dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:hint="@string/foodNameEdit"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCalorie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSelectImage"
+        app:layout_constraintTop_toBottomOf="@+id/selectMeal" />
+
+    <EditText
+        android:id="@+id/editTextCalorie"
+        android:layout_width="188dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:hint="@string/calorieEdit"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editTextReview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSelectImage"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFoodName" />
 
     <EditText
         android:id="@+id/editTextDateTime"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="18dp"
+        android:layout_width="319dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
+        android:fontFamily="@font/gmarketsansmedium"
         android:hint="@string/timeEdit"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editTextCost"
@@ -114,45 +104,94 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextReview" />
 
-    <EditText
-        android:id="@+id/editTextCost"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <Spinner
+        android:id="@+id/selectMeal"
+        android:layout_width="319dp"
+        android:layout_height="79dp"
         android:layout_marginStart="37dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="@string/costEdit"
-        android:inputType="text"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSelectImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDateTime" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="27dp"
-        android:text="@string/confirmButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSelectImage"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="230dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:text="@string/textFood"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/selectMeal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLocation" />
+
+    <Spinner
+        android:id="@+id/spinnerLocation"
+        android:layout_width="319dp"
+        android:layout_height="79dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="139dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="224dp"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:text="@string/locationEdit"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/checkDiet"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="178dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#8BC34A"
+        android:fontFamily="@font/gmarketsansmedium"
         android:text="식단 확인하기"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonSave"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSelectImage" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCost" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="129dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="#8BC34A"
+        android:fontFamily="@font/gmarketsansmedium"
+        android:text="@string/buttonSave"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkDiet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCost" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
