@@ -24,6 +24,7 @@ public class MainActivity2 extends AppCompatActivity {
     private SQLiteDatabase database;
     private Cursor cursor;
     private DietAdapter adapter;
+    private Button goToMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,14 @@ public class MainActivity2 extends AppCompatActivity {
         adapter = new DietAdapter(cursor);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
+        goToMain=findViewById(R.id.return_home);
+        goToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         ImageButton button_moveCalendar = findViewById(R.id.button_moveCalendar);
         button_moveCalendar.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -106,7 +106,10 @@ import java.util.Calendar;
             TextView costType2 = findViewById(R.id.total_cost_text_view2);
             TextView costType3 = findViewById(R.id.total_cost_text_view3);
             TextView costType4 = findViewById(R.id.total_cost_text_view4);
-
+            costType1.setText("");
+            costType2.setText("");
+            costType3.setText("");
+            costType4.setText("");
             // Iterate over the results and display them
             if (cursorCost.moveToFirst()) {
                 do {

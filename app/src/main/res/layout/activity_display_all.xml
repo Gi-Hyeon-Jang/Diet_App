@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="top"
         android:orientation="vertical">
 
         <ImageView
@@ -71,6 +71,21 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gmarketsansmedium"
             android:paddingTop="30dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/return_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8BC34A"
+            android:paddingTop="30dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="35dp"
+            android:fontFamily="@font/gmarketsansmedium"
+            android:text="@string/returnHome"
+            android:gravity="center"
             android:textSize="16sp" />
     </LinearLayout>
 

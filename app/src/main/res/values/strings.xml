@@ -27,4 +27,5 @@
     <string name="button_start">Start</string>
     <string name="buttonSave">저장</string>
     <string name="textFood">음식 분류 선택</string>
+    <string name="returnHome">홈으로 돌아가기</string>
 </resources>

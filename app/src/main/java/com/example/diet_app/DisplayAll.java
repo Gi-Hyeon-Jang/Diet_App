@@ -2,11 +2,14 @@ package com.example.diet_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ public class DisplayAll extends AppCompatActivity {
     private DBHelper dbHelper;
     private SQLiteDatabase database;
     private Cursor cursor;
+    private Button goToMain;
 
     private TextView locationTextView, foodNameTextView, reviewTextView, costTextView, mealDatetimeTextView,calorieTextView,typeTextView;
     private ImageView imageView;
@@ -34,7 +38,14 @@ public class DisplayAll extends AppCompatActivity {
         calorieTextView = findViewById(R.id.calorieView);
         dbHelper = new DBHelper(this);
         database = dbHelper.getReadableDatabase();
-
+        goToMain=findViewById(R.id.return_home);
+        goToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayAll.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         int id = getIntent().getIntExtra("id", -1);
         cursor = database.query("daily_diet", null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
 
